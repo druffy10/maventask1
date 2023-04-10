@@ -8,6 +8,7 @@
     <artifactId>maventask1</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
@@ -23,8 +24,33 @@
         </dependency>
     </dependencies>
 
-
-
-
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <version>3.2.1</version>
+                <configuration>
+                    <checkstyleRules>
+                        <module name="Checker">
+                            <module name="TreeWalker">
+                                <module name="LocalVariableName"/>
+                            </module>
+                        </module>
+                    </checkstyleRules>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>validate</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
+
